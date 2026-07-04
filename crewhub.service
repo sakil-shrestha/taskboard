@@ -1,0 +1,16 @@
+[Unit]
+Description=CrewHub status page
+After=network.target
+
+[Service]
+Type=simple
+User=Crewhub
+Group=Crewhub
+WorkingDirectory=/srv/crewhub/app
+EnvironmentFile=/srv/crewhub/secrets/crewhub.env
+ExecStart=/usr/bin/python3 /srv/crewhub/app/crewhub.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
